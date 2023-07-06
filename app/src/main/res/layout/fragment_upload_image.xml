@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="fragment"
+            type="com.prateekshah.prateekshahgrowghassignment.UploadImageFragment" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:context=".UploadImageFragment">
+
+            <ImageView
+                android:id="@+id/back_img"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:background="@drawable/back_arrow"
+                android:layout_marginStart="10dp"
+                android:onClick="@{() -> fragment.goToWelcomeFragment()}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/upload_img_heading"
+                app:layout_constraintBottom_toBottomOf="@+id/upload_img_heading" />
+
+            <TextView
+                android:id="@+id/upload_img_heading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:fontFamily="@font/noto_sans"
+                android:text="@string/upload_img"
+                android:textColor="#1E1E1E"
+                android:textSize="30sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/selected_img"
+                android:layout_width="250dp"
+                android:layout_height="250dp"
+                android:layout_marginTop="100dp"
+                android:src="@drawable/place_holder_img"
+                app:layout_constraintTop_toBottomOf="@+id/upload_img_heading"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:importantForAccessibility="no" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/select_img_btn"
+                android:layout_width="350dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="40dp"
+                android:background="@drawable/second_border_button"
+                android:text="@string/select_img"
+                android:textAllCaps="false"
+                android:fontFamily="@font/noto_sans_bold"
+                android:textSize="16sp"
+                android:contentDescription="@string/select_img"
+                android:onClick="@{() -> fragment.selectImage()}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/selected_img" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/upload_img_btn"
+                android:layout_width="350dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/rounded_button_gradient"
+                android:text="@string/upload_img"
+                android:textColor="@color/white"
+                android:textAllCaps="false"
+                android:textSize="16sp"
+                android:fontFamily="@font/noto_sans_bold"
+                android:contentDescription="@string/upload_img_btn"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/select_img_btn" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+</layout>

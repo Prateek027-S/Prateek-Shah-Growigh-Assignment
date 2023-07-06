@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Prateek Shah Growigh Assignment</string>
+    <string name="skip_intro">Skip intro</string>
+    <string name="about_us">About Us</string>
+    <string name="dummy_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</string>
+    <string name="next_btn">Next Button</string>
+    <string name="our_mission">Our Mission</string>
+    <string name="our_vision">Our Vision</string>
+    <string name="ready">Ready</string>
+    <string name="welcome_user">Welcome Ayush</string>
+    <string name="feeds_btn">Feeds Button</string>
+    <string name="upload_img_btn">Upload Image Button</string>
+    <string name="feeds">Feeds</string>
+    <string name="upload_img">Upload Image</string>
+    <string name="select_img">Select Image</string>
+</resources>
