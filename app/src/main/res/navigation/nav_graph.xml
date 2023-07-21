@@ -52,7 +52,13 @@
         android:id="@+id/feedsFragment"
         android:name="com.prateekshah.prateekshahgrowghassignment.FeedsFragment"
         android:label="fragment_feeds"
-        tools:layout="@layout/fragment_feeds" />
+        tools:layout="@layout/fragment_feeds" >
+        <action
+            android:id="@+id/action_feedsFragment_to_uploadImageFragment"
+            app:destination="@id/uploadImageFragment"
+            app:popUpTo="@id/feedsFragment"
+            app:popUpToInclusive="false" />
+    </fragment>
     <fragment
         android:id="@+id/uploadImageFragment"
         android:name="com.prateekshah.prateekshahgrowghassignment.UploadImageFragment"

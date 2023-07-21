@@ -5,6 +5,9 @@
 
     <data>
         <variable
+            name="fragment"
+            type="com.prateekshah.prateekshahgrowghassignment.FeedsFragment" />
+        <variable
             name="viewModel"
             type="com.prateekshah.prateekshahgrowghassignment.FeedsViewModel" />
     </data>
@@ -13,14 +16,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".FeedsFragment">
-
-        <!--<TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="40dp"
-            android:text="@{viewModel.photos[0].downloadUrl}"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>-->
 
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:id="@+id/swipeRefreshLayout"
@@ -39,11 +34,10 @@
                     android:padding="6dp"
                     app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:listData="@{viewModel.photos}"
-                    app:spanCount="2"
                     tools:itemCount="16"
                     tools:listitem="@layout/grid_view_item" />
 
@@ -58,7 +52,40 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:imageApiStatus="@{viewModel.status}" />
+            app:imageApiStatus="@{viewModel.status}"
+            tools:ignore="ContentDescription" />
+
+        <FrameLayout
+            android:id="@+id/frame_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toTopOf="@id/bottom_navigation_view"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageView
+            android:id="@+id/upload_img_fab"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/floating_action_button_bg"
+            android:onClick="@{() -> fragment.goToUploadImageFragment()}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/bottom_navigation_view"
+            android:contentDescription="@string/upload_img" />
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottom_navigation_view"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bottom_nav_rectangle"
+            app:itemIconTint="@color/white"
+            app:itemTextColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:menu="@menu/my_menu"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

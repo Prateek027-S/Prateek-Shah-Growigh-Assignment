@@ -3,6 +3,7 @@
     <string name="skip_intro">Skip intro</string>
     <string name="about_us">About Us</string>
     <string name="dummy_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</string>
+    <string name="dummy_text2">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</string>
     <string name="next_btn">Next Button</string>
     <string name="our_mission">Our Mission</string>
     <string name="our_vision">Our Vision</string>
@@ -13,4 +14,16 @@
     <string name="feeds">Feeds</string>
     <string name="upload_img">Upload Image</string>
     <string name="select_img">Select Image</string>
+    <string name="profile_name">The Verge</string>
+    <string name="profile_category">Tech News</string>
+    <string name="view_comments">View all 9 Comments</string>
+    <string name="like">Like</string>
+    <string name="num_likes">%d Likes</string>
+    <string name="comment">Comment</string>
+    <string name="num_comments">%d Comments</string>
+    <string name="share">Share</string>
+    <string name="home">Home</string>
+    <string name="videos">Videos</string>
+    <string name="map">Map</string>
+    <string name="title_activity_bottom_navigation_bar">BottomNavigationBarActivity</string>
 </resources>
