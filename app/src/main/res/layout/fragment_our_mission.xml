@@ -38,7 +38,7 @@
                 android:id="@+id/our_mission_img"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/our_mission_img"
+                android:src="@drawable/our_mission_vector"
                 android:layout_marginBottom="260dp"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
