@@ -1,22 +1,13 @@
 package com.prateekshah.prateekshahgrowghassignment.data
 
 class VideoDataSource {
-    fun loadVideoIds(): List<String> {
+    fun loadVideoIds(): List<VideoModel> {
         return listOf(
-            "GXLKLHk0a3s",
-            "swOQY2yULBc",
-            "60_a5dtNGS4",
-            "d5ArUXwD9lE",
-            "h-LSOqgUPWM",
-            "tqEvEN33FSw",
-            "g8ErTWQVih0",
-            "78OhADj-7Do",
-            "msef8S4hP6E",
-            "iKK911kC4ok",
-            "0GG34FKJMkQ",
-            "hRv4r52ew3A",
-            "-bkw8yNtWek",
-            "vCPAYXVSfXg"
+            VideoModel("https://vod.api.video/vod/vi32GHjHdRADU7s7vctDkU79/mp4/source.mp4", "Title1", "Desc of Video1"),
+            VideoModel("https://vod.api.video/vod/vi5URIIWoql0wrEWcyU4W80/mp4/source.mp4", "Title2", "Desc of Video2"),
+            VideoModel("https://vod.api.video/vod/vim8Z5QJqqQ9I03bjKVRFtQ/mp4/source.mp4", "Title3", "Desc of Video3"),
+            VideoModel("https://vod.api.video/vod/vi43E1dP5betkQdbnYiwQRCT/mp4/source.mp4", "Title4", "Desc of Video4"),
+            VideoModel("https://vod.api.video/vod/vi7fFopGLNjHmfufDjdVYQyh/mp4/source.mp4", "Title5", "Desc of Video5"),
         )
     }
 }

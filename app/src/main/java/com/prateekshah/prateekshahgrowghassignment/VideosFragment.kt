@@ -5,7 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager2.widget.ViewPager2
 import com.prateekshah.prateekshahgrowghassignment.data.VideoDataSource
 import com.prateekshah.prateekshahgrowghassignment.videosAdapter.VideosAdapter
 
@@ -29,11 +29,9 @@ class VideosFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val myDataset = VideoDataSource().loadVideoIds() //object created and method called simultaneously
-        val recyclerView = view.findViewById<RecyclerView>(R.id.videos_recycler_view) // Reference to RecyclerView
-        recyclerView.adapter = VideosAdapter(myDataset)
+        val viewPager2 = view.findViewById<ViewPager2>(R.id.viewPager2) // Reference to RecyclerView
+        viewPager2.adapter = VideosAdapter(myDataset)
+        //recyclerView.setHasFixedSize(true)
 
-        // Use this setting to improve performance if you know that changes
-        // in content do not change the layout size of the RecyclerView
-        recyclerView.setHasFixedSize(true)
     }
 }

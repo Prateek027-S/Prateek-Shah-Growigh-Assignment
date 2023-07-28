@@ -1,21 +1,42 @@
 package com.prateekshah.prateekshahgrowghassignment.videosAdapter
 
-import android.content.Context
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ProgressBar
+import android.widget.TextView
+import android.widget.VideoView
 import androidx.recyclerview.widget.RecyclerView
-import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
-import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
-import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
 import com.prateekshah.prateekshahgrowghassignment.R
+import com.prateekshah.prateekshahgrowghassignment.data.VideoModel
 
 class VideosAdapter(
-    private val dataset: List<String>
+    private val dataset: List<VideoModel>
 ): RecyclerView.Adapter<VideosAdapter.ItemViewHolder>() {
 
     class ItemViewHolder(private val view: View): RecyclerView.ViewHolder(view){
-        val youTubePlayerView: YouTubePlayerView = view.findViewById(R.id.youtube_player_view)
+        //val youTubePlayerView: YouTubePlayerView = view.findViewById(R.id.youtube_player_view)
+        val videoView: VideoView = view.findViewById(R.id.videoView)
+        val title: TextView = view.findViewById(R.id.textVideoTitle)
+        val desc: TextView = view.findViewById(R.id.textVideoDescription)
+        val progressBar: ProgressBar = view.findViewById(R.id.videoProgressBar)
+
+        fun setData(obj:VideoModel) {
+            val videoUri = Uri.parse(obj.videoUrl)
+            videoView.setVideoURI(videoUri)
+            title.text = obj.title
+            desc.text = obj.desc
+
+            videoView.setOnPreparedListener { mediaPlayer ->
+                progressBar.visibility = View.GONE
+                mediaPlayer.start()
+            }
+
+            videoView.setOnCompletionListener { mediaPlayer ->
+                mediaPlayer.start()
+            }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
@@ -26,11 +47,7 @@ class VideosAdapter(
     //called by layout manager to replace the contents of a list item view
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val item = dataset[position]
-        holder.youTubePlayerView.addYouTubePlayerListener(object : AbstractYouTubePlayerListener() {
-            override fun onReady(youTubePlayer: YouTubePlayer) {
-                youTubePlayer.loadVideo(item, 0f)
-            }
-        })
+        holder.setData(item)
     }
 
     //return size of the dataset

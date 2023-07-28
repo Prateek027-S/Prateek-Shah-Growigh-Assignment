@@ -26,4 +26,9 @@
     <string name="videos">Videos</string>
     <string name="map">Map</string>
     <string name="title_activity_bottom_navigation_bar">BottomNavigationBarActivity</string>
+    <string name="hello_username">Hello,\nAyush</string>
+    <string name="explore">Explore</string>
+    <string name="browse_by">Browse By</string>
+    <string name="latest">Latest</string>
+    <string name="older">Older</string>
 </resources>
