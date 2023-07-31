@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.prateekshah.prateekshahgrowghassignment.network.ImageResponse
 import com.prateekshah.prateekshahgrowghassignment.network.ImageApi
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 enum class ImageApiStatus{ LOADING, ERROR, DONE }
@@ -37,8 +38,9 @@ class FeedsViewModel: ViewModel() {
             } catch (e: Exception){
                 _status.value = ImageApiStatus.ERROR
                 _photos.value = listOf()
-                Log.d("getTenPhotos", "Error")
+                Log.d("getTenPhotos", "Error, $e")
             }
         }
+
     }
 }

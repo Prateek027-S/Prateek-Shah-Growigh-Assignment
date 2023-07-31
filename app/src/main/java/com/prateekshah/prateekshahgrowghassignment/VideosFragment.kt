@@ -31,7 +31,5 @@ class VideosFragment : Fragment() {
         val myDataset = VideoDataSource().loadVideoIds() //object created and method called simultaneously
         val viewPager2 = view.findViewById<ViewPager2>(R.id.viewPager2) // Reference to RecyclerView
         viewPager2.adapter = VideosAdapter(myDataset)
-        //recyclerView.setHasFixedSize(true)
-
     }
 }
