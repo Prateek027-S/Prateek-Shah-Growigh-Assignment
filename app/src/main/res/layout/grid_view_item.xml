@@ -47,7 +47,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/noto_sans"
-                android:textSize="16sp"
+                android:textSize="12sp"
                 android:layout_marginStart="10dp"
                 android:text="@string/profile_category"
                 app:layout_constraintStart_toEndOf="@id/post_profile"
@@ -61,23 +61,27 @@
                 android:fontFamily="@font/noto_sans"
                 android:textColor="@color/black"
                 android:layout_marginTop="10dp"
+                android:layout_marginStart="5dp"
                 app:layout_constraintTop_toBottomOf="@id/post_profile"
                 app:layout_constraintStart_toStartOf="@id/post_profile" />
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/mars_image"
                 android:layout_width="wrap_content"
-                android:layout_height="170dp"
-                android:scaleType="fitXY"
-                android:adjustViewBounds="true"
-                android:padding="2dp"
+                android:layout_height="wrap_content"
                 android:layout_marginVertical="10dp"
-                app:shapeAppearanceOverlay="@style/RoundedSquare"
+                android:layout_marginHorizontal="5dp"
+                android:paddingEnd="10dp"
+                android:adjustViewBounds="true"
+                android:scaleType="fitXY"
                 app:imageUrl="@{photo.downloadUrl}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/post_description"
-                tools:src="@tools:sample/backgrounds/scenic"
-                tools:ignore="ContentDescription" />
+                app:shapeAppearanceOverlay="@style/RoundedSquare"
+                tools:ignore="ContentDescription"
+                tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
             <TextView
                 android:id="@+id/num_comments_text"
