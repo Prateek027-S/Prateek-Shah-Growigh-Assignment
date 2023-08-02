@@ -1,6 +1,5 @@
 package com.prateekshah.prateekshahgrowghassignment.videosAdapter
 
-import android.content.Context
 import android.net.Uri
 import android.util.Log
 import android.view.LayoutInflater
@@ -12,12 +11,16 @@ import android.widget.VideoView
 import androidx.recyclerview.widget.RecyclerView
 import com.prateekshah.prateekshahgrowghassignment.R
 import com.prateekshah.prateekshahgrowghassignment.data.VideoModel
+import com.yausername.youtubedl_android.YoutubeDL
+import com.yausername.youtubedl_android.YoutubeDLException
+import com.yausername.youtubedl_android.YoutubeDLRequest
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+
 
 class VideosAdapter(
     private val dataset: List<VideoModel>
@@ -26,19 +29,31 @@ class VideosAdapter(
     class ItemViewHolder(private val view: View): RecyclerView.ViewHolder(view){
         private var videoJob: Job? = null
         val videoView: VideoView = view.findViewById(R.id.videoView)
-        val title: TextView = view.findViewById(R.id.textVideoTitle)
-        val desc: TextView = view.findViewById(R.id.textVideoDescription)
         val progressBar: ProgressBar = view.findViewById(R.id.videoProgressBar)
+        val videoTitle: TextView = view.findViewById(R.id.video_title)
+        val profileName: TextView = view.findViewById(R.id.video_profile_name)
+        var isVideoPlaying = false
 
         fun setData(obj:VideoModel) {
             videoJob?.cancel()
             progressBar.visibility = View.VISIBLE
-            title.text = obj.title
-            desc.text = obj.desc
+
 
             videoJob = CoroutineScope(IO).launch {
                 try {
-                    val videoUri = Uri.parse(obj.videoUrl)
+                    val request = YoutubeDLRequest(obj.videoUrl)
+                    request.addOption("-f", "best")
+                    val streamInfo = YoutubeDL.getInstance().getInfo(request)
+                    withContext(Dispatchers.Main) {
+                        setupVideoView(streamInfo.url)
+                        progressBar.visibility = View.GONE
+                        //makeItemVisible()
+
+                        videoTitle.text = streamInfo.title
+                        profileName.text = streamInfo.uploader
+                        Log.d("Download", streamInfo.url)
+                    }
+                    /*val videoUri = Uri.parse(obj.videoUrl)
                     videoView.setVideoURI(videoUri)
                     videoView.setOnPreparedListener { mediaPlayer ->
                         progressBar.visibility = View.GONE
@@ -47,7 +62,7 @@ class VideosAdapter(
 
                     videoView.setOnCompletionListener { mediaPlayer ->
                         mediaPlayer.start()
-                    }
+                    }*/
                 } catch (e: Exception) {
                     withContext(Dispatchers.Main) {
                         progressBar.visibility = View.GONE
@@ -57,6 +72,23 @@ class VideosAdapter(
             }
         }
 
+        fun setupVideoView(videoUrl: String){
+            videoView.setOnPreparedListener {
+                progressBar.visibility = View.GONE
+                videoView.start()
+                it.isLooping = true
+                // Add OnClickListener to toggle play and pause
+                videoView.setOnClickListener {
+                    if (isVideoPlaying) {
+                        videoView.pause()
+                    } else {
+                        videoView.start()
+                    }
+                    isVideoPlaying = !isVideoPlaying
+                }
+            }
+            videoView.setVideoURI(Uri.parse(videoUrl))
+        }
         fun cancelVideoJob() {
             videoJob?.cancel()
         }

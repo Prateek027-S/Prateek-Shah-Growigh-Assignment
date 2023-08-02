@@ -21,6 +21,9 @@ android {
         vectorDrawables {
             useSupportLibrary true
         }
+        ndk {
+            abiFilters 'x86', 'x86_64', 'armeabi-v7a', 'arm64-v8a'
+        }
     }
 
     buildFeatures {
@@ -104,4 +107,6 @@ dependencies {
     //Coroutines
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4'
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4"
+    //YouTube dl
+    implementation 'com.github.yausername.youtubedl-android:library:4f00394'
 }
